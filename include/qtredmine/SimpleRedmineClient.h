@@ -26,16 +26,6 @@ class QTREDMINESHARED_EXPORT SimpleRedmineClient : public RedmineClient
 {
     Q_OBJECT
 
-private:
-    /// Maximum number of resources to fetch at once
-    int limit_ = 100;
-
-    /// Current connection status to Redmine
-    QNetworkAccessManager::NetworkAccessibility connected_ = QNetworkAccessManager::UnknownAccessibility;
-
-    /// Currently checking the connection
-    bool checkingConnection_;
-
 public:
     /**
      * @brief Constructor for an unconfigured Redmine connection
@@ -365,6 +355,8 @@ protected:
                                EnumerationsCb callback,
                                QString parameters = "" );
 
+
+
 public slots:
     /**
      * @brief Check whether the connection currently works
@@ -372,7 +364,7 @@ public slots:
      * If the status has changed from \c Accessible to \c NotAccessible or vice versa, the
      * \c connectionChanged signal is emitted.
      */
-    void checkConnectionStatus();
+    void checkConnectionStatus ();
 
 signals:
     /**
@@ -380,7 +372,17 @@ signals:
      *
      * @param connected true if connection is available, false otherwise
      */
-    void connectionChanged( QNetworkAccessManager::NetworkAccessibility connected );
+    void connectionChanged (QNetworkAccessManager::NetworkAccessibility connected);
+
+private:
+    /// Maximum number of resources to fetch at once
+    int limit_ = 100;
+
+    /// Current connection status to Redmine
+    QNetworkAccessManager::NetworkAccessibility connected_ = QNetworkAccessManager::UnknownAccessibility;
+
+    /// Currently checking the connection
+    bool checkingConnection_;
 };
 
 } // qtredmine
