@@ -1,10 +1,11 @@
 TEMPLATE = lib
 TARGET = qtredmine
 
-DEFINES += QTREDMINE_LIBRARY
-
 QT += network
 QT -= gui
+QT += qml quick
+
+
 QMAKE_CXXFLAGS += -std=c++11
 
 INCLUDEPATH += $$PWD/include/qtredmine
@@ -18,6 +19,7 @@ HEADERS += \
     include/qtredmine/RedmineClient.h \
     include/qtredmine/SimpleRedmineClient.h \
     include/qtredmine/SimpleRedmineTypes.h \
+    qtredmineplugin.h
 
 SOURCES += \
     KeyAuthenticator.cpp \
@@ -25,18 +27,25 @@ SOURCES += \
     PasswordAuthenticator.cpp \
     RedmineClient.cpp \
     SimpleRedmineClient.cpp \
+    qtredmineplugin.cpp
 
 DISTFILES += \
     .travis.yml \
-    qtredmine.pri \
+#    qtredmine.pri \
     Example.h \
     Example.cpp \
-    README.md \
+    README.md
 
-unix {
-    target.path = /usr/lib
-    INSTALLS += target
-    CONFIG += staticlib
-}
+#QML ONLY ATM
 
-include($$PWD/qtredmine.pri)
+TARGETPATH  = ro/wesell/$${TARGET}
+
+load(qml_plugin)
+#OTHER_FILES+
+#unix {
+#    target.path = /usr/lib
+#    INSTALLS += target
+#    CONFIG += staticlib
+#}
+
+#include($$PWD/qtredmine.pri)

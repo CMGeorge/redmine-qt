@@ -1,0 +1,3 @@
+module ro.wesell.qtredmine
+plugin declarative_qtredmine
+class QtRedminePlugin

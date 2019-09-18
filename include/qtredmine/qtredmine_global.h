@@ -3,14 +3,14 @@
 
 #include <QtGlobal>
 
-#if defined(QT_STATIC_BUILD)
-  #define QTREDMINESHARED_EXPORT
-#else
-  #if defined(QTREDMINE_LIBRARY)
-    #define QTREDMINESHARED_EXPORT Q_DECL_EXPORT
-  #else
-    #define QTREDMINESHARED_EXPORT Q_DECL_IMPORT
-  #endif
-#endif
-
+//#if defined(QT_STATIC_BUILD)
+//  #define QTREDMINESHARED_EXPORT
+//#else
+//  #if defined(QTREDMINE_LIBRARY)
+//    #define QTREDMINESHARED_EXPORT Q_DECL_EXPORT
+//  #else
+//    #define QTREDMINESHARED_EXPORT Q_DECL_IMPORT
+//  #endif
+//#endif
+#define QTREDMINESHARED_EXPORT
 #endif // QTREDMINE_GLOBAL_H
