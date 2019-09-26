@@ -8,26 +8,7 @@ QT += qml quick
 
 QMAKE_CXXFLAGS += -std=c++11
 
-INCLUDEPATH += $$PWD/include/qtredmine
-
-HEADERS += \
-    include/qtredmine/qtredmine_global.h \
-    include/qtredmine/Authenticator.h \
-    include/qtredmine/KeyAuthenticator.h \
-    include/qtredmine/Logging.h \
-    include/qtredmine/PasswordAuthenticator.h \
-    include/qtredmine/RedmineClient.h \
-    include/qtredmine/SimpleRedmineClient.h \
-    include/qtredmine/SimpleRedmineTypes.h \
-    qtredmineplugin.h
-
-SOURCES += \
-    KeyAuthenticator.cpp \
-    Logging.cpp \
-    PasswordAuthenticator.cpp \
-    RedmineClient.cpp \
-    SimpleRedmineClient.cpp \
-    qtredmineplugin.cpp
+#INCLUDEPATH += $$PWD/include/qtredmine
 
 DISTFILES += \
     .travis.yml \

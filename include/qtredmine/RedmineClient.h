@@ -36,7 +36,7 @@ namespace qtredmine {
 class QTREDMINESHARED_EXPORT RedmineClient : public QObject
 {
     Q_OBJECT
-
+    Q_PROPERTY(QString url_ READ getUrl WRITE setUrl/* NOTIFY url_Changed*/)
 public:
     /// Typedef for a JSON callback function
     using JsonCb = std::function<void(QNetworkReply*, QJsonDocument*)>;
@@ -107,7 +107,7 @@ public:
      *
      * @param url Redmine base URL
      */
-    void setUrl( const QString& url );
+    Q_INVOKABLE void setUrl( const QString& url );
 
     /**
      * @brief Set the Redmine authentification parameters

@@ -4,6 +4,8 @@
 #include <QObject>
 #include <QtQml/QQmlExtensionPlugin>
 #include <QtQml/qqml.h>
+#include <QGuiApplication>
+
 class QtRedminePlugin : public QQmlExtensionPlugin
 {
     Q_OBJECT
@@ -16,5 +18,11 @@ signals:
 
 public slots:
 };
+
+static void registerQtRedmine(){
+    QtRedminePlugin *_qRedmine = new QtRedminePlugin();
+    _qRedmine->registerTypes("ro.wesell.qtredmine");
+}
+Q_COREAPP_STARTUP_FUNCTION(registerQtRedmine)
 
 #endif // QTREDMINEPLUGIN_H
