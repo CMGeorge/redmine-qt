@@ -126,7 +126,7 @@ void decreaseLoggingIndent();
 
 #else
 
-#define DEBUG(...) QNoDebug() << ARGS
+#define DEBUG(...) qDebug() << ARGS
 #define DEBUGFIELDS QNoDebug() << FIELDARGS
 #define ENTER() QNoDebug() << ARGS
 

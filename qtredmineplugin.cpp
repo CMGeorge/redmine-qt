@@ -1,6 +1,7 @@
 #include "qtredmineplugin.h"
+#include "SimpleRedmineTypes.h"
 #include <QDebug>
-#include "RedmineClient.h"
+#include "QMLRedmineClient.h"
 //QtRedminePlugin::QtRedminePlugin(QObject *parent) : QObject(parent)
 //{
 
@@ -17,5 +18,10 @@ void QtRedminePlugin::registerTypes(const char *uri)
 
     Q_ASSERT(uri == QLatin1String("ro.wesell.qtredmine"));
     qmlRegisterType<QObject>(uri,1,0,"Rest");
-    qmlRegisterType<qtredmine::RedmineClient>(uri, 1,0,"RedmineClient");
+    qmlRegisterType<qtredmine::QMLRedmineClient>(uri, 1,0,"RedmineClient");
+    qmlRegisterType<QNetworkAccessManager>(uri, 1,0, "QNetworkAccessManager");
+//    qmlRegisterType<qtredmine::RedmineError>(uri,1,0,"RedmineError");
+//    qmlRegisterType<qtredmine::RedmineResource>(uri,1,0,"RedmineResource");
+//    qmlRegisterType<qtredmine::User>(uri,1,0,"User");
 }
+//Q_DECLARE_METATYPE(qtredmine::User)

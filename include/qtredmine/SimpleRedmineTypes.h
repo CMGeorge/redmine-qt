@@ -15,7 +15,6 @@
 #include <QtGlobal>
 
 #include <functional>
-
 namespace qtredmine {
 
 /// Redmine error codes
@@ -66,9 +65,13 @@ struct Item {
 /// Redmine resource
 struct RedmineResource
 {
+    Q_GADGET
+public:
     QDateTime createdOn; ///< Created on
     QDateTime updatedOn; ///< Updated on
     Item      user;      ///< Redmine user
+
+//    Q_PROPERTY(QDateTime createdOn MEMBER  m_createdOn)
 };
 
 /// Item vector
@@ -192,6 +195,10 @@ struct Membership : RedmineResource
 /// Structure representing a project
 struct Project : RedmineResource
 {
+    Q_OBJECT
+    Q_PROPERTY(int id MEMBER id)
+public:
+    Project();
     int       id = NULL_ID; ///< ID
 
     QString   description; ///< Description
@@ -228,6 +235,9 @@ struct Tracker : RedmineResource
 /// Structure representing a user
 struct User : RedmineResource
 {
+    Q_GADGET
+    Q_PROPERTY(int id MEMBER id)
+public:
     int     id = NULL_ID; ///< ID
 
     QString login;        ///< Login name
@@ -236,6 +246,7 @@ struct User : RedmineResource
 
     QString mail;         ///< E-mail address
     QDateTime lastLoginOn;///< Last login time and date
+
 };
 
 enum class VersionStatus
@@ -571,5 +582,6 @@ Q_DECLARE_METATYPE( qtredmine::TimeEntry )
 Q_DECLARE_METATYPE( qtredmine::Tracker )
 Q_DECLARE_METATYPE( qtredmine::User )
 Q_DECLARE_METATYPE( qtredmine::Version )
+Q_DECLARE_METATYPE( qtredmine::RedmineError)
 
 #endif // SIMPLEREDMINETYPES_H
